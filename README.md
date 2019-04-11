@@ -1,5 +1,7 @@
 # Chart-Generator
-A chart.js project. Just a quick prototype so far. Takes a data from a csv file and generates a bar chart.
+A chart.js project. Just a quick prototype. Drag and drop a CSV file. Takes data from a csv and generates a bar chart.
+
+TODO: Add display output for copy/pasting formatted code that makes chart.
 
 ## HTML 5 APIs
 * Drag and Drop
