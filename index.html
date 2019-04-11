@@ -3,11 +3,37 @@
 		<title>Chart Generator</title>
 		<link href="styles.css" rel="stylesheet" media="all">
 		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js" type="text/javascript"></script>
-		<script src="script.js" type="text/javascript"></script>
+		
 		
 	</head>
 	<body>
-		<div id="drop-target" ondrop="drop(event)" ondragover="allowDrop(event)">Drag and drop CSVs here.</div>
+		
+		<form id="upload" action="index.html" method="POST" enctype="multipart/form-data">
+
+		<fieldset>
+		<legend>Upload CSV</legend>
+		
+		<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+		
+		<div>
+			<label for="fileselect">Files to upload:</label>
+			<input type="file" id="fileselect" name="fileselect[]"/>
+			<div id="filedrag">or drop files here</div>
+		</div>
+		<br />
+		<div id="submitbutton">
+			<button type="submit">Submit</button>
+		</div>
+		
+		</fieldset>
+		
+		</form>
+		
+		<div id="messages">
+		<p>Status Messages</p>
+		</div>
+		<script src="script.js" type="text/javascript"></script>
+		
 		<canvas id="chart" width="400" height="400"></canvas>
 		<script src="chart.js" type="text/javascript"></script>
 	</body>
