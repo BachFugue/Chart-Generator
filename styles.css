@@ -50,7 +50,7 @@ img
 	max-width: 100%;
 }
 
-pre
+pre.contents
 {
 	width: 95%;
 	height: 8em;
@@ -60,7 +60,6 @@ pre
 	margin: 0 0 1em auto;
 	border: 1px inset #666;
 	background-color: #eee;
-	overflow: auto;
 }
 
 #messages

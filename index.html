@@ -1,40 +1,80 @@
-<html>
+<!doctype html>
+<html lang="en">
 	<head>
-		<title>Chart Generator</title>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
 		<link href="styles.css" rel="stylesheet" media="all">
+
+		<title>Chart Generator</title>
+		
+		<!-- JS -->
+	  	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
 		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js" type="text/javascript"></script>
 		
 		
 	</head>
 	<body>
-		
-		<form id="upload" action="index.html" method="POST" enctype="multipart/form-data">
-
-		<fieldset>
-		<legend>Upload CSV</legend>
-		
-		<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
-		
-		<div>
-			<label for="fileselect">Files to upload:</label>
-			<input type="file" id="fileselect" name="fileselect[]"/>
-			<div id="filedrag">or drop files here</div>
-		</div>
-		<br />
-		<div id="submitbutton">
-			<button type="submit">Submit</button>
+		<div class="jumbotron">
+			<div class="container">
+				<h1 class="display-4">DropChart</h1>
+				<p class="lead">Just drop your CSV file to generate your chart.</p>
+			</div>
 		</div>
 		
-		</fieldset>
+		<div class="container">
+			<form id="upload" action="index.html" method="POST" enctype="multipart/form-data">
+				<div class="form-row">
+					<div class="form-group col-sm-2">
+						<label for="chartType">Chart Type</label>
+						<select class="form-control" id="chartType">
+							<option>Line</option>
+							<option>Bar</option>
+							<option>Pie</option>
+							<option>Donut</option>
+						</select>
+					</div>
+				</div>
+			
+				<fieldset>
+					<legend>Upload CSV</legend>
+					
+					<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+					
+					<div>
+						<label for="fileselect">Files to upload:</label>
+						<input type="file" id="fileselect" name="fileselect[]"/>
+						<div id="filedrag">or drop files here</div>
+					</div>
+					<br />
+					<div id="submitbutton">
+						<button type="submit">Submit</button>
+					</div>
+				
+				</fieldset>
+			
+			</form>
 		
-		</form>
 		
-		<div id="messages">
-		<p>Status Messages</p>
-		</div>
-		<script src="script.js" type="text/javascript"></script>
+			<div id="messages">
+			<p>Status Messages</p>
+			</div>
+			<script src="script.js" type="text/javascript"></script>
+			
+			<canvas id="chart" width="400" height="400"></canvas>
+			<script src="chart.js" type="text/javascript"></script>
+			
+			<div id="codedisplay"></div>	
+		</div>	
 		
-		<canvas id="chart" width="400" height="400"></canvas>
-		<script src="chart.js" type="text/javascript"></script>
+		<!-- JS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	</body>
 </html>

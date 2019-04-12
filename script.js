@@ -39,7 +39,6 @@ var CSVData;
 
 	}
 
-
 	// output file information
 	function ParseFile(file) {
 
@@ -48,15 +47,15 @@ var CSVData;
 			var reader = new FileReader();
 			reader.onload = function(e) {
 				Output(
-					"<p><strong>" + file.name + ":</strong></p><pre>" + 
+					"<p><strong>" + file.name + ":</strong></p><pre class='contents'>" + 
 					e.target.result.replace(/</g, "&lt;").replace(/>/g, "&gt;") +
 					"</pre>"
 				);
 				
 				var data = e.target.result;
 				CSVData = CSVToArray(data);
-// 				console.log(CSVData);
-				CSVChart(CSVData);
+				dropChart(CSVData);
+ 				//codeDisplay();
 				
 			}
 			reader.readAsText(file);
