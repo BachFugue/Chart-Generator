@@ -8,11 +8,13 @@ var CSVData;
 	}
 
 
+/*
 	// output information
 	function Output(msg) {
 		var m = $id("messages");
 		m.innerHTML = msg + m.innerHTML;
 	}
+*/
 
 
 	// file drag hover
@@ -46,11 +48,13 @@ var CSVData;
 		if (file.type.indexOf("text") == 0) {
 			var reader = new FileReader();
 			reader.onload = function(e) {
+/*
 				Output(
 					"<p><strong>" + file.name + ":</strong></p><pre class='contents'>" + 
 					e.target.result.replace(/</g, "&lt;").replace(/>/g, "&gt;") +
 					"</pre>"
 				);
+*/
 				
 				var data = e.target.result;
 				CSVData = CSVToArray(data);

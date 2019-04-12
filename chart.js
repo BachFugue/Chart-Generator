@@ -1,4 +1,4 @@
-
+var dropChart;
 
 function dropChart(csvdata){
 	var ctx = document.getElementById('chart').getContext('2d');
@@ -19,7 +19,7 @@ function dropChart(csvdata){
 	var data = {
         labels: labels,
         datasets: [{
-            label: 'WH40K attack stats',
+            label: false,
             data: dataset,
             backgroundColor: [
                 'rgba(242, 231, 80, 0.5)',
@@ -52,12 +52,6 @@ function dropChart(csvdata){
             borderWidth: 1
         }]
     };
-// 	var data = ;
-/*
-	var data = {};
-	var data.labels = ['Orks', 'Imperial Gaurd', 'Space Marines', 'Chaos Daemons', 'Tyranids', 'Eldar'];
-	var data.datasets[data] = [12, 19, 3, 5, 2, 3];
-*/
 	
 	//chart options
 	var options = {
@@ -67,19 +61,42 @@ function dropChart(csvdata){
                     beginAtZero: true
                 }
             }]
+        },
+        legend: {
+            display: false,
+            labels: {
+                fontColor: 'rgb(0, 0, 0)'
+            }
+        },
+        title: {
+            display: true,
+            text: 'Custom Chart Title'
         }
 	};
+	
 
-	var myChart = new Chart(ctx, {
+	//the chart
+	dropChart = new Chart(ctx, {
 	    type: type,
 	    data: data,
 	    options: options
 	});
 }
 
+function updateChart(){
+	if ($('#chartTitle').val().length != 0){
+		dropChart.chart.options.title.text = chartTitle.value;
+	}
+	
+	
+	dropChart.update();
+	console.log(dropChart);
+}
+
 function codeDisplay(csv){
 var html = `
-hello
+Code generated here.
 `;
-
+document.getElementById('codedisplay').innerHTML = html;
+console.log(document.getElementById('codedisplay'));
 }
