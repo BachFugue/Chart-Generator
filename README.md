@@ -1,5 +1,5 @@
-# Chart-Generator
-A chart.js project. Just a quick prototype. Drag and drop a CSV file. Takes data from a csv and generates a bar chart.
+# DropChart
+A chart.js generator. Just drag and drop a CSV file. Grabs the data from a csv and generates a bar chart.
 
 TODO: Add display output for copy/pasting formatted code that makes chart.
 
@@ -12,3 +12,4 @@ TODO: Add display output for copy/pasting formatted code that makes chart.
 This [library](https://www.chartjs.org/).
 
 ## Twitter Bootstrap
+The one and only quick prototype library.
