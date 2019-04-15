@@ -80,7 +80,7 @@ pre.contents {
 
 /* styles for bootstrap */
 .jumbotron {
-	background-color: #80C8BC;
+	background-color: #F1BA07;
 }
 
 /*
@@ -96,5 +96,5 @@ pre.contents {
 }
 
 .jumbotron .lead {
-	color: #e8e8e8;
+	color: #f8f8f8;
 }
