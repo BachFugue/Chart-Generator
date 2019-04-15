@@ -4,7 +4,7 @@ function dropChart(csvdata){
 	var ctx = document.getElementById('chart').getContext('2d');
 	
 	//chart type
-	var type = 'bar';
+	var type = 'line';
 	
 	//chart data
 	if (typeof csvdata === 'undefined' || csvdata === null) {
@@ -88,9 +88,26 @@ function updateChart(){
 		dropChart.chart.options.title.text = chartTitle.value;
 	}
 	
+	var hideTitle = $('#hideTitle').children("option:selected").val();
+	dropChart.chart.options.title.display = hideTitle;
+	console.log("hideTitle: " + hideTitle);
 	
-	dropChart.update();
-	console.log(dropChart);
+	if ($('#chartLegend').val().length != 0){
+		dropChart.chart.data.datasets[0].label = chartLegend.value;
+	}
+	
+	var hideLegend = $('#hideLegend').children("option:selected").val();
+	dropChart.chart.options.legend.display = hideLegend;
+	console.log("hideLegend: " + hideLegend);
+	
+	
+	
+	
+	
+	dropChart.update({
+		duration: 800,
+		easing: 'easeOutBounce'
+	});
 }
 
 function codeDisplay(csv){
