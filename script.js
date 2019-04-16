@@ -58,7 +58,7 @@ var CSVData;
 				
 				var data = e.target.result;
 				CSVData = CSVToArray(data);
-				dropChart(CSVData);
+				var dropChart = new DropChart(DropChartType, dropChartData(CSVData), dropChartOptions());
  				//codeDisplay();
 				
 			}

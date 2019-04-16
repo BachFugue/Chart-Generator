@@ -17,7 +17,7 @@ function dropChartData(csvdata){
 	var data = {
 	    labels: labels,
 	    datasets: [{
-	        label: false,
+	        label: 'Data',
 	        data: dataset,
 	        backgroundColor: [
 	            'rgba(242, 231, 80, 0.5)',
@@ -55,6 +55,7 @@ function dropChartData(csvdata){
 
 // Chart Options
 function dropChartOptions(){
+	console.log('begin at zero');
 	var options = {
 		scales: {
 	        yAxes: [{
