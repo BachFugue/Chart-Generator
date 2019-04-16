@@ -9,13 +9,14 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
 		<link href="styles.css" rel="stylesheet" media="all">
-
+		<link href="assets/prism/prism.css" rel="stylesheet" media="all">
 		<title>Chart Generator</title>
 		
 		<!-- JS -->
 	  	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>
 		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js" type="text/javascript"></script>
+		<script src="assets/prism/prism.js" type="text/javascript"></script>
 		
 		
 	</head>
@@ -87,12 +88,19 @@
 			<script src="script.js" type="text/javascript"></script>
 			
 			<div class="row">
-				<div class="col">
+				<div class="col-md-6">
 					<canvas id="chart" width="400" height="400"></canvas>
 					<script src="DropChart.js" type="text/javascript"></script>
 				</div>
-				<div class="col">
-					<div id="codeDisplay"></div>
+				<div class="col-md-6">
+					<pre>
+						<code>
+&lt;canvas id="myChart" width="400" height="400"&gt;&lt;/canvas&gt;
+&lt;script&gt;
+var js_stuff = goes_here;
+&lt;/script&gt;
+						</code>
+					</pre>
 				</div>
 			</div>
 			
