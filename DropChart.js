@@ -1,3 +1,4 @@
+
 // Chart Type
 var dc_typeSelector = document.getElementById("chartType");
 var dc_typeValue = dc_typeSelector.options[dc_typeSelector.selectedIndex].value;
@@ -78,41 +79,21 @@ function dropChartOptions(){
 	return options;
 }
 
+// Get Context
+var ctx = document.getElementById('chart').getContext('2d');
+
 // Chart Class
 class DropChart{
 	
 	constructor(type, data, options){
 		
-		var ctx = document.getElementById('chart').getContext('2d');
-		
-		dropChart = new Chart(ctx, {
+		new Chart(ctx, {
 		    type: type,
 		    data: data,
 		    options: options
 		});
 	}
 	
-}
-
-
-
-
-
-// var dropChart;
-
-function dropChart(csvdata){
-	var ctx = document.getElementById('chart').getContext('2d');
-	
-	//chart type
-	var type = 'line';
-	
-	//chart data
-	if (typeof csvdata === 'undefined' || csvdata === null) {
-	    var dataset = [12, 19, 3, 5, 2, 3];
-	} else {
-		dataset = csvdata[1];
-		console.log(dataset);
-	}
 }
 
 function updateChart(){
