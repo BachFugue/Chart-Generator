@@ -1,25 +1,20 @@
-
 // Chart Type
-var dc_typeSelector = document.getElementById("chartType");
-var dc_typeValue = dc_typeSelector.options[dc_typeSelector.selectedIndex].value;
-var DropChartType = dc_typeValue;
+function dropChartType(){
+	var dropTypeSelector = document.getElementById("chartType");
+	var type = dropTypeSelector.options[dropTypeSelector.selectedIndex].value;
+	console.log(type);
+	return type;
+}
+
 
 // Chart Data
-function dropChartData(csvdata){
-	if (typeof csvdata === 'undefined' || csvdata === null) {
-	    var dataset = [12, 19, 3, 5, 2, 3];
-	} else {
-		dataset = csvdata[1];
-		console.log(dataset);
-	}
-	
-	var labels = csvdata[0];
-	
+function dropChartData(datasetsData, labels){
+
 	var data = {
 	    labels: labels,
 	    datasets: [{
 	        label: 'Data',
-	        data: dataset,
+	        data: datasetsData,
 	        backgroundColor: [
 	            'rgba(242, 231, 80, 0.5)',
 	            'rgba(115, 12, 2, 0.5)',
@@ -51,12 +46,12 @@ function dropChartData(csvdata){
 	        borderWidth: 1
 	    }]
 	};
+	console.log(data);
 	return data;
 }
 
 // Chart Options
 function dropChartOptions(){
-	console.log('begin at zero');
 	var options = {
 		scales: {
 	        yAxes: [{
@@ -76,6 +71,7 @@ function dropChartOptions(){
 	        text: 'Custom Chart Title'
 	    }
 	};
+	console.log(options);
 	return options;
 }
 
@@ -93,28 +89,5 @@ class DropChart{
 		    options: options
 		});
 	}
-	
-}
 
-function updateChart(){
-	if ($('#chartTitle').val().length != 0){
-		dropChart.chart.options.title.text = chartTitle.value;
-	}
-	
-	var hideTitle = $('#hideTitle').children("option:selected").val();
-	dropChart.chart.options.title.display = hideTitle;
-	console.log("hideTitle: " + hideTitle);
-	
-	if ($('#chartLegend').val().length != 0){
-		dropChart.chart.data.datasets[0].label = chartLegend.value;
-	}
-	
-	var hideLegend = $('#hideLegend').children("option:selected").val();
-	dropChart.chart.options.legend.display = hideLegend;
-	console.log("hideLegend: " + hideLegend);
-	
-	dropChart.update({
-		duration: 800,
-		easing: 'easeOutBounce'
-	});
 }

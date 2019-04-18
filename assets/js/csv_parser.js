@@ -58,8 +58,27 @@ var CSVData;
 				
 				var data = e.target.result;
 				CSVData = CSVToArray(data);
-				var dropChart = new DropChart(DropChartType, dropChartData(CSVData), dropChartOptions());
+				
+				var droperties = new Droperties();
+				droperties.rawData = CSVData;
+				
+				if(droperties.isFirstRowLabel()){
+					droperties.labels = droperties.rawData.shift();
+
+				} else {
+					console.log('there were no labels');
+				}
+				
+				console.log("labels : " + droperties.labels);
+				console.log("data : " + droperties.rawData);
+				
+				var dropChartType = dropChartType();
+				var dropChartData = dropChartData(droperties.rawData, droperties.labels);
+				var dropChartOptions = dropChartOptions();
+				
+				var dropChart = new DropChart(DropChartType, dropChartData, dropChartOptions);
  				//codeDisplay();
+ 				console.log("chart : " + dropChart);
 				
 			}
 			reader.readAsText(file);
