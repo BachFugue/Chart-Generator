@@ -48,35 +48,31 @@ var CSVData;
 		if (file.type.indexOf("text") == 0) {
 			var reader = new FileReader();
 			reader.onload = function(e) {
-/*
-				Output(
-					"<p><strong>" + file.name + ":</strong></p><pre class='contents'>" + 
-					e.target.result.replace(/</g, "&lt;").replace(/>/g, "&gt;") +
-					"</pre>"
-				);
-*/
+
+
 				
 				var data = e.target.result;
 				CSVData = CSVToArray(data);
 				
 				var droperties = new Droperties();
-				droperties.rawData = CSVData;
+				droperties.csvData = CSVData;
+				droperties.initDataForBar();
 				
-				if(droperties.isFirstRowLabel()){
-					droperties.labels = droperties.rawData.shift();
-
-				} else {
-					console.log('there were no labels');
-				}
+				console.log(droperties.options);
 				
-				console.log("labels : " + droperties.labels);
-				console.log("data : " + droperties.rawData);
+				droperties.initType();
+				droperties.initData();
+				droperties.initOptions();
+				console.log(droperties.type);
+				console.log(droperties.data);
+				console.log(droperties.options);
 				
-				var dropChartType = dropChartType();
-				var dropChartData = dropChartData(droperties.rawData, droperties.labels);
-				var dropChartOptions = dropChartOptions();
+				var dropChart = new DropChart(
+					droperties.type,
+					droperties.data,
+					droperties.options
+				);
 				
-				var dropChart = new DropChart(DropChartType, dropChartData, dropChartOptions);
  				//codeDisplay();
  				console.log("chart : " + dropChart);
 				
