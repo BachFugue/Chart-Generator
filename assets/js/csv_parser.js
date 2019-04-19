@@ -1,3 +1,4 @@
+var droperties;
 var dropChart;
 
 (function() {
@@ -54,7 +55,7 @@ var dropChart;
 				var data = e.target.result;
 				csvData = CSVToArray(data);
 				
-				var droperties = new Droperties();
+				droperties = new Droperties();
 				droperties.csvData = csvData;
 
 				droperties.initDataForBar();
@@ -73,7 +74,7 @@ var dropChart;
 					dropChart.destroy();
 				}
 				
-				generateCode();
+				outputCode(droperties);
 				
 				dropChart = new Chart(ctx, {
 				    type: droperties.type,
