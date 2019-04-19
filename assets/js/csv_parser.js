@@ -1,4 +1,4 @@
-var CSVData;
+var dropChart;
 
 (function() {
 
@@ -52,30 +52,38 @@ var CSVData;
 
 				
 				var data = e.target.result;
-				CSVData = CSVToArray(data);
+				csvData = CSVToArray(data);
 				
 				var droperties = new Droperties();
-				droperties.csvData = CSVData;
+				droperties.csvData = csvData;
+
 				droperties.initDataForBar();
-				
-				console.log(droperties.options);
-				
 				droperties.initType();
 				droperties.initData();
 				droperties.initOptions();
-				console.log(droperties.type);
-				console.log(droperties.data);
-				console.log(droperties.options);
-				
+
+/*
 				var dropChart = new DropChart(
 					droperties.type,
 					droperties.data,
 					droperties.options
 				);
+*/
+				if(typeof dropChart != "undefined"){
+					dropChart.destroy();
+				}
 				
- 				//codeDisplay();
- 				console.log("chart : " + dropChart);
+				generateCode();
 				
+				dropChart = new Chart(ctx, {
+				    type: droperties.type,
+				    data: droperties.data,
+				    options: droperties.options
+				});
+
+ 				// TODO codeDisplay();
+ 				console.log(dropChart);
+
 			}
 			reader.readAsText(file);
 		}

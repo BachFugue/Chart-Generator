@@ -10,14 +10,11 @@
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
 		<link href="assets/css/styles.css" rel="stylesheet" media="all">
 		<link href="assets/js/prism/prism.css" rel="stylesheet" media="all">
+		<link href="assets/js/prism/line_numbers.css" rel="stylesheet" media="all">
 		<title>Chart Generator</title>
 		
 		<!-- JS -->
-	  	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
-		<script>hljs.initHighlightingOnLoad();</script>
-		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js" type="text/javascript"></script>
-		<script src="assets/js/prism/prism.js" type="text/javascript"></script>
-		<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+		
 		
 		
 	</head>
@@ -63,9 +60,9 @@
 					</div>
 					<div class="form-group col-sm-2">
 						<label for="hideTitle">Display?</label>
-						<select class="form-control" id="hideTitle">
-							<option value="true" selected="selected">Show</option>
-							<option value="false">Hide</option>
+						<select class="form-control" id="toggleTitle">
+							<option value="true">Show</option>
+							<option value="false" selected="selected">Hide</option>
 						</select>
 					</div>
 				</div>
@@ -76,7 +73,7 @@
 					</div>
 					<div class="form-group col-sm-2">
 						<label for="hideLegend">Display?</label>
-						<select class="form-control" id="hideLegend">
+						<select class="form-control" id="toggleLegend">
 							<option value="true">Show</option>
 							<option value="false" selected="selected">Hide</option>
 						</select>
@@ -88,13 +85,16 @@
 		
 			
 			
-			<div class="row">
+			<div class="row pt-4">
 				<div class="col-md-6">
 					<canvas id="chart" width="400" height="400"></canvas>
+					<!-- JS -->
 					<script src="assets/js/chart.js/update_chart.js" type="text/javascript"></script>
 					<script src="assets/js/chart.js/droperties.js" type="text/javascript"></script>
 					<script src="assets/js/chart.js/build_chart.js" type="text/javascript"></script>
 					<script src="assets/js/csv_parser.js" type="text/javascript"></script>
+					<script src="assets/js/chart.js/code_generator.js" type="text/javascript"></script>
+					
 <!--
 					<script>
 						var droperties = new Droperties();
@@ -105,45 +105,9 @@
 -->
 				</div>
 				<div class="col-md-6">
-					<pre data-src="code.html">
-						<code class="lang-js">
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
+					<pre data-src="code.html" class="line_numbers" style="white-space:pre-wrap;">
+						<code class="lang-*" id="codeOutput">
+<canvas id='myChart' width='400' height='400'></canvas>
 						</code>
 					</pre>
 				</div>
@@ -162,9 +126,17 @@ var myChart = new Chart(ctx, {
 				
 		</div>	
 		
-		<!-- JS -->
+		<!-- Prism: jQuery -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<!-- Bootstrap -->
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<!-- Chart.js -->
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js" type="text/javascript"></script>
+		<!-- Prism -->
+		<script src="assets/js/prism/prism.js" type="text/javascript"></script>
+		<!-- Prism: Line Numbers Plugin -->
+		<script src="assets/js/prism/line_numbers.js" type="text/javascript"></script>
+		<!-- Prism: Clipboard Plugin -->
+		<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 	</body>
 </html>

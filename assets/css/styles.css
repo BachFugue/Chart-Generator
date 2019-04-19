@@ -98,3 +98,7 @@ pre.contents {
 .jumbotron .lead {
 	color: #f8f8f8;
 }
+
+.hljs{
+	overflow-y: hidden;
+}

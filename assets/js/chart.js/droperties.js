@@ -99,8 +99,7 @@ class Droperties{
 		        }
 		    },
 		    title: {
-		        display: true,
-		        text: 'Custom Chart Title'
+		        display: false
 		    }
 		};
 	}
