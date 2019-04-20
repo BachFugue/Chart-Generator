@@ -61,7 +61,6 @@ var dropChart;
 				droperties = new Droperties();
 				droperties.csvData = csvData;
 
-				droperties.initDataForOneDimensional();
 				droperties.initType();
 				droperties.initData();
 				droperties.initOptions();

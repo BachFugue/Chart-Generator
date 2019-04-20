@@ -1,7 +1,9 @@
 //DropParams Class
 class Droperties{
-	labels = ['this', 'that'];
-	csvData = [1, 2];
+	labels;
+	csvData;
+	data;
+	datasets;
 	backgroundColor;
 	borderColor;
 	borderWidth;
@@ -31,11 +33,51 @@ class Droperties{
 	}
 	
 	separateLabelsFromData(){
-		if(this.csvData[0].some(isNaN)){
+		if(this.isFirstRowLabel()){
 			this.labels = this.csvData.shift();
+			this.data = this.csvData;
 		}
 	}
 	
+	buildDataset(value){
+		console.log(value);
+		
+		var d = {
+            label: '# of Votes',
+            data: value,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+	    };
+	    console.log(d);
+	    return d;
+	   
+	}
+	
+	initDatasets(){
+		this.separateLabelsFromData();
+ 		this.datasets = this.data.map(this.buildDataset);
+ 		console.log(this.datasets);
+	}
+	
+	
+	
+	
+/*
 	initDataForOneDimensional(){
 		this.separateLabelsFromData();
 		this.csvData = this.csvData[0]
@@ -44,7 +86,7 @@ class Droperties{
 	initDataForTwoDimensional(){
 		this.separateLabelsFromData();
 	}
-	
+*/
 	
 	////////////////////
 	//Drop Chart Init //
@@ -56,29 +98,10 @@ class Droperties{
 	}
 	
 	initData(){
+		this.initDatasets();
 		this.data = {
 		    labels: this.labels,
-	        datasets: [{
-	            label: '# of Votes',
-	            data: this.csvData,
-	            backgroundColor: [
-	                'rgba(255, 99, 132, 0.2)',
-	                'rgba(54, 162, 235, 0.2)',
-	                'rgba(255, 206, 86, 0.2)',
-	                'rgba(75, 192, 192, 0.2)',
-	                'rgba(153, 102, 255, 0.2)',
-	                'rgba(255, 159, 64, 0.2)'
-	            ],
-	            borderColor: [
-	                'rgba(255, 99, 132, 1)',
-	                'rgba(54, 162, 235, 1)',
-	                'rgba(255, 206, 86, 1)',
-	                'rgba(75, 192, 192, 1)',
-	                'rgba(153, 102, 255, 1)',
-	                'rgba(255, 159, 64, 1)'
-	            ],
-	            borderWidth: 1
-	        }]
+	        datasets: this.datasets
 		};
 	}
 	

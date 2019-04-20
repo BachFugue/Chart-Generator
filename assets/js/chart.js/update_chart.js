@@ -1,13 +1,17 @@
 function updateChart(){
 	
+	var dropTypeSelector = document.getElementById("chartType");
+	var dropChartType = dropTypeSelector.options[dropTypeSelector.selectedIndex].value;
+	dropChart.config.type = dropChartType;
+
 /*
 	// Hide/Show Fields
 	var toggleTitle = $('#toggleTitle').children("option:selected").val();
-	dropChart.chart.options.title.display = toggleTitle;
+	dropChart.options.title.display = false;
 	console.log(toggleTitle);
 	
 	var toggleLegend = $('#toggleLegend').children("option:selected").val();
-	dropChart.chart.options.legend.display = toggleLegend;
+	dropChart.options.legend.display = toggleLegend;
 	console.log(toggleLegend);
 	
 	// Field Values
@@ -21,10 +25,7 @@ function updateChart(){
 	  console.log("chartLegend.value: " + chartLegend.value);
 	}
 */
-	
-	var dropTypeSelector = document.getElementById("chartType");
-	var dropChartType = dropTypeSelector.options[dropTypeSelector.selectedIndex].value;
-	dropChart.config.type = dropChartType;
+
 	
 	dropChart.update({
 		duration: 2000,
