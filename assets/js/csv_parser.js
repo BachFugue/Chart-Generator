@@ -51,6 +51,9 @@ var dropChart;
 			reader.onload = function(e) {
 
 
+				if(typeof dropChart != "undefined"){
+					dropChart.destroy();
+				}
 				
 				var data = e.target.result;
 				csvData = CSVToArray(data);
@@ -58,7 +61,7 @@ var dropChart;
 				droperties = new Droperties();
 				droperties.csvData = csvData;
 
-				droperties.initDataForBar();
+				droperties.initDataForOneDimensional();
 				droperties.initType();
 				droperties.initData();
 				droperties.initOptions();
@@ -70,9 +73,6 @@ var dropChart;
 					droperties.options
 				);
 */
-				if(typeof dropChart != "undefined"){
-					dropChart.destroy();
-				}
 				
 				outputCode(droperties);
 				

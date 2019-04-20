@@ -1,5 +1,6 @@
 function updateChart(){
 	
+/*
 	// Hide/Show Fields
 	var toggleTitle = $('#toggleTitle').children("option:selected").val();
 	dropChart.chart.options.title.display = toggleTitle;
@@ -12,13 +13,18 @@ function updateChart(){
 	// Field Values
 	if (($('#chartTitle').val().length != 0) && toggleTitle){
 		dropChart.chart.options.title.text = chartTitle.value;
-		console.log("chartTitle.value: " + chartTitle.value);
+	  console.log("chartTitle.value: " + chartTitle.value);
 	}
 	
 	if (($('#chartLegend').val().length != 0) && toggleLegend){
 		dropChart.chart.data.datasets[0].label = chartLegend.value;
-		console.log("chartLegend.value: " + chartLegend.value);
+	  console.log("chartLegend.value: " + chartLegend.value);
 	}
+*/
+	
+	var dropTypeSelector = document.getElementById("chartType");
+	var dropChartType = dropTypeSelector.options[dropTypeSelector.selectedIndex].value;
+	dropChart.config.type = dropChartType;
 	
 	dropChart.update({
 		duration: 2000,

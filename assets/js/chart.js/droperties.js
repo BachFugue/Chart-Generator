@@ -6,7 +6,7 @@ class Droperties{
 	borderColor;
 	borderWidth;
 	beginAtZero;
-	type = 'bar';
+	type;
 	data;
 	options;
 	
@@ -14,6 +14,12 @@ class Droperties{
 	constructor(){
 		
 	}
+	
+/*
+	getChartType(){
+		this.type = $('#chartType').children("option:selected").val();
+	}
+*/
 	
 	isFirstRowLabel(){
 		if(!this.csvData[0].some(isNaN)){
@@ -30,10 +36,15 @@ class Droperties{
 		}
 	}
 	
-	initDataForBar(){
+	initDataForOneDimensional(){
 		this.separateLabelsFromData();
 		this.csvData = this.csvData[0]
 	}
+	
+	initDataForTwoDimensional(){
+		this.separateLabelsFromData();
+	}
+	
 	
 	////////////////////
 	//Drop Chart Init //
@@ -46,7 +57,7 @@ class Droperties{
 	
 	initData(){
 		this.data = {
-		    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+		    labels: this.labels,
 	        datasets: [{
 	            label: '# of Votes',
 	            data: this.csvData,
