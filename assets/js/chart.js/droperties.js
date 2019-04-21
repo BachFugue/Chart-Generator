@@ -4,6 +4,7 @@ class Droperties{
 	csvData;
 	data;
 	datasets;
+	datasetsBuilder;
 	backgroundColor;
 	borderColor;
 	borderWidth;
@@ -11,19 +12,64 @@ class Droperties{
 	type;
 	data;
 	options;
+	backgroundColors = [
+		[
+			'rgba(255, 99, 132, 0.2)',
+			'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+		],
+		[
+			'rgba(54, 162, 235, 0.2)',
+			'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 99, 132, 0.2)'
+            
+		],
+		[
+			'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+			'rgba(153, 102, 255, 0.2)',
+			'rgba(255, 159, 64, 0.2)',
+			'rgba(255, 99, 132, 0.2)',
+			'rgba(54, 162, 235, 0.2)'
+        ],
+	];
+	borderColors = [
+		[
+			'rgba(255, 99, 132, 1)',
+			'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+		],
+		[
+			'rgba(54, 162, 235, 1)',
+			'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+            'rgba(255, 99, 132, 1)'
+            
+		],
+		[
+			'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+			'rgba(153, 102, 255, 1)',
+			'rgba(255, 159, 64, 1)',
+			'rgba(255, 99, 132, 1)',
+			'rgba(54, 162, 235, 1)'
+        ],
+	];
 	
 	
-	constructor(){
-		
-	}
 	
-/*
-	getChartType(){
-		this.type = $('#chartType').children("option:selected").val();
-	}
-*/
-	
-	isFirstRowLabel(){
+	isRowLabel(){
 		if(!this.csvData[0].some(isNaN)){
 			return false;
 		} else {
@@ -33,60 +79,31 @@ class Droperties{
 	}
 	
 	separateLabelsFromData(){
-		if(this.isFirstRowLabel()){
+		if(this.isRowLabel()){
 			this.labels = this.csvData.shift();
 			this.data = this.csvData;
 		}
 	}
 	
-	buildDataset(value){
-		console.log(value);
-		
-		var d = {
-            label: '# of Votes',
-            data: value,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-	    };
-	    console.log(d);
-	    return d;
-	   
-	}
-	
 	initDatasets(){
 		this.separateLabelsFromData();
- 		this.datasets = this.data.map(this.buildDataset);
- 		console.log(this.datasets);
+		
+		this.datasets = new Array();
+		// TODO build 3d data array
+		var arrLength = this.data.length;
+		for(var i=0; i<arrLength; i++){
+			this.datasets.push({
+				label: 'dataset ' + i,
+				data: this.data[i],
+				backgroundColor: this.backgroundColors[i],
+				borderColor: this.borderColors[i]
+				
+			});
+		}
+		this.datasets.borderWidth = 1;
+		console.log(this.datasets);
 	}
-	
-	
-	
-	
-/*
-	initDataForOneDimensional(){
-		this.separateLabelsFromData();
-		this.csvData = this.csvData[0]
-	}
-	
-	initDataForTwoDimensional(){
-		this.separateLabelsFromData();
-	}
-*/
+
 	
 	////////////////////
 	//Drop Chart Init //
@@ -107,6 +124,10 @@ class Droperties{
 	
 	initOptions(){
 		this.options = {
+			animation: {
+				duration: 1000,
+				easing: 'easeInOutQuad',
+			},
 			scales: {
 		        yAxes: [{
 		            ticks: {
@@ -115,7 +136,7 @@ class Droperties{
 		        }]
 		    },
 		    legend: {
-		        display: false,
+		        display: true,
 		        labels: {
 		            fontColor: 'rgb(0, 0, 0)'
 		        }
