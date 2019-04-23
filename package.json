@@ -1,0 +1,10 @@
+{
+  "name": "DropChart",
+  "version": "1.0.0",
+  "description": "A drag and drop chart generator",
+  "main": "index.js",
+  "repository": "https://github.com/BachFugue/DropChart.git",
+  "author": "Peter Lanier",
+  "license": "MIT",
+  "private": false
+}
